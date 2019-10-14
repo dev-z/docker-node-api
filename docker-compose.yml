@@ -1,0 +1,14 @@
+api-server:
+  image: node:10
+  container_name: node-api-server
+  volumes:
+    # Map root(./) folder from host to /user/src/app in container
+    - ./:/usr/src/app
+  working_dir: /usr/src/app
+  ports:
+    - 8080:8080
+  environment:
+    - NODE_ENV=development
+    - PORT=8080
+  command:
+    sh -c 'npm install && npm run start-dev'
